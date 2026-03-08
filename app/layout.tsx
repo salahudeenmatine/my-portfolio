@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://my-portfolio-neon-one-56.vercel.app"),
+  metadataBase: new URL("https://salahudeenmatine.vercel.app"),
   title: "Salahudeen Matine | Cyber Security Student",
   description:
     "Final-year Cyber Security student at UWL. Specialising in OSINT investigations, web application testing, and threat intelligence.",
@@ -21,18 +21,18 @@ export const metadata: Metadata = {
     title: "Salahudeen Matine | Cyber Security Student",
     description:
       "Final-year Cyber Security student at UWL. Specialising in OSINT investigations, web application testing, and threat intelligence.",
-    url: "https://my-portfolio-neon-one-56.vercel.app",
+    url: "https://salahudeenmatine.vercel.app",
     siteName: "Salahudeen Matine",
     type: "website",
     locale: "en_GB",
-    images: ["/opengraph-image"],
+    images: ["/opengraph-image.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Salahudeen Matine | Cyber Security Student",
     description:
       "Final-year Cyber Security student at UWL. Specialising in OSINT, web app testing, and threat intelligence.",
-    images: ["/opengraph-image"],
+    images: ["/opengraph-image.png"],
   },
 };
 
