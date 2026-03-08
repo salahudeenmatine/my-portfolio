@@ -10,50 +10,54 @@ export default function OGImage() {
       <div
         style={{
           background: "#080b10",
-          width: "100%",
-          height: "100%",
+          width: "1200px",
+          height: "630px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "monospace",
           position: "relative",
-          overflow: "hidden",
         }}
       >
-        {/* Subtle green grid */}
+        {/* Radial glow */}
         <div
           style={{
             position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "linear-gradient(#00ff8c 1px, transparent 1px), linear-gradient(to right, #00ff8c 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-            opacity: 0.03,
+            top: "0px",
+            left: "0px",
+            right: "0px",
+            bottom: "0px",
+            background:
+              "radial-gradient(ellipse at center, rgba(0,255,140,0.12) 0%, rgba(0,255,140,0.03) 40%, transparent 70%)",
+            display: "flex",
           }}
         />
 
-        {/* Bottom green line accent */}
+        {/* Top accent line */}
         <div
           style={{
             position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
+            top: "0px",
+            left: "0px",
+            right: "0px",
             height: "2px",
-            background: "linear-gradient(to right, transparent, #00ff8c, transparent)",
+            background:
+              "linear-gradient(to right, transparent, #00ff8c, transparent)",
+            display: "flex",
           }}
         />
 
-        {/* Top green line accent */}
+        {/* Bottom accent line */}
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
+            bottom: "0px",
+            left: "0px",
+            right: "0px",
             height: "2px",
-            background: "linear-gradient(to right, transparent, #00ff8c, transparent)",
+            background:
+              "linear-gradient(to right, transparent, #00ff8c, transparent)",
+            display: "flex",
           }}
         />
 
@@ -63,62 +67,89 @@ export default function OGImage() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "0px",
+            justifyContent: "center",
             textAlign: "center",
-            padding: "0 80px",
+            padding: "0px 80px",
+            gap: "0px",
           }}
         >
-          {/* Tagline */}
+          {/* Eyebrow */}
           <div
             style={{
               color: "#00ff8c",
-              fontSize: "13px",
+              fontSize: "14px",
+              fontWeight: "600",
               letterSpacing: "0.3em",
               textTransform: "uppercase",
-              marginBottom: "24px",
+              marginBottom: "28px",
               opacity: 0.8,
+              display: "flex",
             }}
           >
             Cyber Security Portfolio
           </div>
 
-          {/* Name */}
+          {/* Name row */}
           <div
             style={{
-              color: "#ffffff",
-              fontSize: "72px",
-              fontWeight: "bold",
-              letterSpacing: "-2px",
-              lineHeight: 1,
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "baseline",
+              gap: "20px",
               marginBottom: "28px",
             }}
           >
-            Salahudeen{" "}
-            <span style={{ color: "#00ff8c" }}>Matine</span>
+            <div
+              style={{
+                color: "#ffffff",
+                fontSize: "80px",
+                fontWeight: "700",
+                letterSpacing: "-2px",
+                lineHeight: "1",
+                display: "flex",
+              }}
+            >
+              Salahudeen
+            </div>
+            <div
+              style={{
+                color: "#00ff8c",
+                fontSize: "80px",
+                fontWeight: "700",
+                letterSpacing: "-2px",
+                lineHeight: "1",
+                display: "flex",
+              }}
+            >
+              Matine
+            </div>
           </div>
 
-          {/* Specialisms */}
+          {/* Subtitle */}
+          <div
+            style={{
+              color: "#00ff8c",
+              fontSize: "22px",
+              letterSpacing: "0.08em",
+              marginBottom: "20px",
+              opacity: 0.75,
+              display: "flex",
+            }}
+          >
+            Cyber Security • OSINT • Web App Testing
+          </div>
+
+          {/* Footer line */}
           <div
             style={{
               color: "#6b7280",
-              fontSize: "22px",
-              letterSpacing: "0.05em",
-              marginBottom: "20px",
-            }}
-          >
-            Cyber Security · OSINT · Web App Testing
-          </div>
-
-          {/* Location */}
-          <div
-            style={{
-              color: "#374151",
-              fontSize: "13px",
-              letterSpacing: "0.25em",
+              fontSize: "14px",
+              letterSpacing: "0.2em",
               textTransform: "uppercase",
+              display: "flex",
             }}
           >
-            London, UK · University of West London
+            London, UK • CV at /cv.pdf
           </div>
         </div>
       </div>
