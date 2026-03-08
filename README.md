@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Salahudeen Matine — Portfolio
 
-## Getting Started
+Personal portfolio site built with Next.js and Tailwind CSS.
 
-First, run the development server:
+## Getting started
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Before deploying
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Replace `https://YOUR_DOMAIN` in `app/layout.tsx` with your real URL (e.g. `https://salahudeenmatine.vercel.app`).
+- Ensure `public/cv.pdf` contains your latest CV.
+- Ensure `public/images/headshot.jpg` exists.
 
-## Learn More
+## Cache troubleshooting
 
-To learn more about Next.js, take a look at the following resources:
+**Favicon not updating?**
+Hard refresh: `Cmd + Shift + R` (Mac) or `Ctrl + Shift + R` (Windows/Linux).
+Or open DevTools → Network tab → check "Disable cache" → reload.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**OG / link preview not updating after deploy?**
+OG previews are cached aggressively by platforms. Use these tools to force a refresh:
+- LinkedIn: https://www.linkedin.com/post-inspector/
+- Twitter/X: https://cards-dev.twitter.com/validator
+- Facebook: https://developers.facebook.com/tools/debug/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## OG image
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Generated dynamically by Next.js at `/opengraph-image` via `app/opengraph-image.tsx`.
+Uses the built-in `next/og` `ImageResponse` API — no external packages required.
+Renders at 1200×630px matching the site aesthetic.
