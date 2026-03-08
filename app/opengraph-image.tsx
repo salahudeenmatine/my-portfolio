@@ -1,159 +1,82 @@
+// app/opengraph-image.tsx
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OGImage() {
+export default function OpenGraphImage() {
   return new ImageResponse(
     (
       <div
         style={{
-          background: "#080b10",
           width: "1200px",
           height: "630px",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-between",
+          padding: "64px",
+          backgroundColor: "#080b10",
+          color: "#ffffff",
           position: "relative",
+          fontFamily:
+            "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
         }}
       >
-        {/* Radial glow */}
+        {/* subtle grid */}
         <div
           style={{
             position: "absolute",
-            top: "0px",
-            left: "0px",
-            right: "0px",
-            bottom: "0px",
-            background:
-              "radial-gradient(ellipse at center, rgba(0,255,140,0.12) 0%, rgba(0,255,140,0.03) 40%, transparent 70%)",
-            display: "flex",
+            inset: 0,
+            backgroundImage:
+              "linear-gradient(rgba(0,255,140,0.08) 1px, transparent 1px), linear-gradient(to right, rgba(0,255,140,0.08) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+            opacity: 0.25,
           }}
         />
 
-        {/* Top accent line */}
+        {/* glow */}
         <div
           style={{
             position: "absolute",
-            top: "0px",
-            left: "0px",
-            right: "0px",
-            height: "2px",
+            width: 900,
+            height: 900,
+            left: "50%",
+            top: "35%",
+            transform: "translate(-50%, -50%)",
             background:
-              "linear-gradient(to right, transparent, #00ff8c, transparent)",
-            display: "flex",
+              "radial-gradient(circle, rgba(0,255,140,0.18) 0%, rgba(0,255,140,0.05) 35%, rgba(8,11,16,0) 70%)",
+            filter: "blur(12px)",
           }}
         />
 
-        {/* Bottom accent line */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "0px",
-            left: "0px",
-            right: "0px",
-            height: "2px",
-            background:
-              "linear-gradient(to right, transparent, #00ff8c, transparent)",
-            display: "flex",
-          }}
-        />
-
-        {/* Content */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            padding: "0px 80px",
-            gap: "0px",
-          }}
-        >
-          {/* Eyebrow */}
-          <div
-            style={{
-              color: "#00ff8c",
-              fontSize: "14px",
-              fontWeight: "600",
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              marginBottom: "28px",
-              opacity: 0.8,
-              display: "flex",
-            }}
-          >
-            Cyber Security Portfolio
+        {/* content */}
+        <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 18 }}>
+          <div style={{ fontSize: 72, fontWeight: 800, letterSpacing: -1 }}>
+            Salahudeen Matine
           </div>
-
-          {/* Name row */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "baseline",
-              gap: "20px",
-              marginBottom: "28px",
-            }}
-          >
-            <div
-              style={{
-                color: "#ffffff",
-                fontSize: "80px",
-                fontWeight: "700",
-                letterSpacing: "-2px",
-                lineHeight: "1",
-                display: "flex",
-              }}
-            >
-              Salahudeen
-            </div>
-            <div
-              style={{
-                color: "#00ff8c",
-                fontSize: "80px",
-                fontWeight: "700",
-                letterSpacing: "-2px",
-                lineHeight: "1",
-                display: "flex",
-              }}
-            >
-              Matine
-            </div>
-          </div>
-
-          {/* Subtitle */}
-          <div
-            style={{
-              color: "#00ff8c",
-              fontSize: "22px",
-              letterSpacing: "0.08em",
-              marginBottom: "20px",
-              opacity: 0.75,
-              display: "flex",
-            }}
-          >
+          <div style={{ fontSize: 28, color: "#00ff8c", fontWeight: 700 }}>
             Cyber Security • OSINT • Web App Testing
           </div>
-
-          {/* Footer line */}
-          <div
-            style={{
-              color: "#6b7280",
-              fontSize: "14px",
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              display: "flex",
-            }}
-          >
-            London, UK • CV at /cv.pdf
+          <div style={{ fontSize: 22, color: "rgba(255,255,255,0.72)", maxWidth: 900, lineHeight: 1.4 }}>
+            Evidence-first investigations, hands-on testing labs, and clear, structured reporting.
           </div>
+        </div>
+
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            justifyContent: "space-between",
+            fontSize: 18,
+            color: "rgba(255,255,255,0.55)",
+          }}
+        >
+          <div>London, UK</div>
+          <div>CV: /cv.pdf</div>
         </div>
       </div>
     ),
-    { width: 1200, height: 630 }
+    { ...size }
   );
 }
