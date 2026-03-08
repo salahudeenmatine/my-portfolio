@@ -12,9 +12,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// TODO: Replace https://YOUR_DOMAIN with your real deployed URL after going live (e.g. https://salahudeenmatine.vercel.app)
 export const metadata: Metadata = {
-  metadataBase: new URL("https://YOUR_DOMAIN"),
+  metadataBase: new URL("https://my-portfolio-neon-one-56.vercel.app"),
   title: "Salahudeen Matine | Cyber Security Student",
   description:
     "Final-year Cyber Security student at UWL. Specialising in OSINT investigations, web application testing, and threat intelligence.",
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
     title: "Salahudeen Matine | Cyber Security Student",
     description:
       "Final-year Cyber Security student at UWL. Specialising in OSINT investigations, web application testing, and threat intelligence.",
-    url: "https://YOUR_DOMAIN",
+    url: "https://my-portfolio-neon-one-56.vercel.app",
     siteName: "Salahudeen Matine",
     type: "website",
     locale: "en_GB",
