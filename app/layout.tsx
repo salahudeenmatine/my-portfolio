@@ -25,14 +25,14 @@ export const metadata: Metadata = {
     siteName: "Salahudeen Matine",
     type: "website",
     locale: "en_GB",
-    images: ["/opengraph-image.png"],
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Salahudeen Matine | Cyber Security Student",
     description:
       "Final-year Cyber Security student at UWL. Specialising in OSINT, web app testing, and threat intelligence.",
-    images: ["/opengraph-image.png"],
+    images: ["/opengraph-image"],
   },
 };
 
