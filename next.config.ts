@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  async redirects() {
+    // The old site linked straight to /cv.pdf. Send those links to the CV page.
+    return [{ source: '/cv.pdf', destination: '/cv', permanent: false }]
+  },
+}
 
-export default nextConfig;
+export default nextConfig
