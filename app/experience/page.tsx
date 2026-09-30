@@ -72,7 +72,6 @@ export default function ExperiencePage() {
                     </ul>
                   </>
                 ),
-                margin: <MarginNote note={{ label: 'Scope', tone: 'limit', text: isecom.scopeNote }} />,
               },
             ]}
           />
@@ -115,7 +114,6 @@ export default function ExperiencePage() {
         <div className="wrap">
           <Row>
             <h2 id="tools-title">Tools, and where I used them</h2>
-            <p>No proficiency scores: just what I’ve used and the context I used it in.</p>
           </Row>
           <Row>
             <table className="plain-table">

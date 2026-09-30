@@ -93,9 +93,8 @@ export default function Home() {
                 main: <FindingsList findings={snapstore.findings} compact />,
                 margin: (
                   <>
-                    <MarginNote note={{ label: 'Finding 2', tone: 'limit', text: 'Proven as a remote crash. Code execution was not demonstrated.' }} />
+                    <MarginNote note={{ label: 'Finding 2', tone: 'limit', text: 'Proven as a remote crash of the helper process. Code execution was not demonstrated.' }} />
                     <MarginNote note={{ label: 'Finding 5', tone: 'limit', text: 'Needs write access to an early PATH directory first. Not a standalone remote exploit.' }} />
-                    <MarginNote note={{ label: 'Disclosure', text: 'CWE comments in the source named four of the classes. The work shown is reproduction and evidence.' }} />
                   </>
                 ),
               },
@@ -103,7 +102,7 @@ export default function Home() {
               {
                 main: (
                   <ul className="link-list">
-                    {snap.links?.map((l) => (
+                    {snap.links?.slice(0, 2).map((l) => (
                       <li key={l.href}>
                         <SmartLink href={l.href}>{l.label}</SmartLink>
                       </li>
@@ -135,7 +134,7 @@ export default function Home() {
                 ),
               },
               { main: <p>{isecom.summary[0]}</p> },
-              { main: <p>{isecom.summary[1]}</p>, margin: <MarginNote note={{ label: 'Scope', tone: 'limit', text: isecom.scopeNote }} /> },
+              { main: <p>{isecom.summary[1]}</p> },
               {
                 main: (
                   <>

@@ -100,7 +100,6 @@ export const snapstore: CaseStudy = {
         {
           kind: 'p',
           text: 'snapstore is a small artifact-ingest service. An HTTP gateway written in Go hands work to helpers written in C, Rust and Python. It is deliberately vulnerable, built for practice, and I ran it locally.',
-          note: { label: 'Context', text: 'A practice target, not a client engagement. None of this says anything about real users or real systems.' },
         },
         {
           kind: 'list',
@@ -118,7 +117,6 @@ export const snapstore: CaseStudy = {
         {
           kind: 'p',
           text: 'I read every file in the repository, using AI assistance alongside my own review to locate candidate issues. The vulnerable files also carried inline CWE comments (CWE-918, 120, 22 and 89) naming four of the vulnerability classes, so I don\u2019t claim to have found those classes unaided.',
-          note: { label: 'Disclosure', text: 'The AI assistance and the CWE comments are both disclosed in the report itself.' },
         },
         {
           kind: 'p',
@@ -182,7 +180,7 @@ export const snapstore: CaseStudy = {
       blocks: [
         {
           kind: 'p',
-          text: 'The C helper copies the requested filename into a fixed 64-byte buffer with `strcpy`, which never checks the length. A longer filename overwrites neighbouring memory on the stack, including the value the program uses to know where to return to.',
+          text: 'The C helper copies the requested filename into a fixed 64-byte buffer with `strcpy`, which never checks the length. A longer filename writes past the end of the buffer into adjacent stack memory.',
         },
         { kind: 'code', label: 'native/exiftrim/src/main.c', code: 'char local_path[64];\nstrcpy(local_path, requested_file);' },
         {
@@ -193,16 +191,16 @@ export const snapstore: CaseStudy = {
         { kind: 'figure', figure: 'overflow' },
         {
           kind: 'p',
-          text: 'The \u201ctrace trap\u201d, rather than a plain crash, is macOS\u2019s stack canary detecting the corruption before the function returns.',
+          text: 'The helper process was terminated with `signal: trace/BPT trap`, and the gateway kept answering requests afterwards.',
           note: {
             label: 'Limit',
             tone: 'limit',
-            text: 'What this proves is a remote crash: a denial of service reachable over HTTP. Code execution was not demonstrated, and I did not inspect the built binary\u2019s mitigations.',
+            text: 'What this proves is that a remote request can crash the helper process. Code execution was not demonstrated, and I did not establish exactly why the process stopped or inspect the built binary\u2019s mitigations.',
           },
         },
         {
           kind: 'p',
-          text: 'The Makefile compiles with `-O2 -g -Wall` and sets no explicit hardening flags. Platform defaults may still add some protection, which is likely why the crash was caught, so I treat this as a reduced safety margin rather than proof that the binary is unprotected.',
+          text: 'The Makefile compiles with `-O2 -g -Wall` and sets no explicit hardening flags. Platform defaults may still add some protection, so I treat this as a reduced safety margin rather than proof that the binary is unprotected.',
         },
         {
           kind: 'list',
@@ -312,7 +310,7 @@ export const snapstore: CaseStudy = {
           heading: 'Fix',
           items: [
             'Call helpers by absolute path, for example `/usr/local/libexec/snapstore/exiftrim`. The Makefile already defines that install location; the gateway just never uses it.',
-            'Where a lookup can\u2019t be avoided, give the child process an explicit, trusted PATH instead of inheriting one.',
+            'If a lookup can\u2019t be avoided, resolve each helper once at startup against a trusted directory and check the result is the expected install path. Setting PATH on the child process doesn\u2019t help: `exec.Command` looks the name up when it is called, using the gateway\u2019s own PATH.',
           ],
         },
       ],
@@ -327,7 +325,7 @@ export const snapstore: CaseStudy = {
           items: [
             'Verbose errors. The gateway reflects raw downstream errors back to the caller, including SQLite messages, fetch errors and filesystem paths. That helps an attacker and amplifies the SQL injection and path traversal findings.',
             'Unenforced HTTP methods. The README documents specific methods, but a single handler answers any method: `/jobs` worked with a GET. With no authentication anywhere the impact is negligible, but the documented restrictions aren\u2019t real.',
-            'No third-party dependencies. The Go, Rust and Python manifests declare no external packages, so there is no supply-chain surface to review. A positive.',
+            'No third-party packages. The Go, Rust and Python manifests declare no external packages, so there were no third-party libraries to review.',
           ],
         },
       ],

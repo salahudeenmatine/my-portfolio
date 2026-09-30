@@ -13,7 +13,7 @@ export const isecom = {
 
   /** Opening line on the Experience page. */
   intro:
-    'A remote internship working on real client investigations, not simulated or university exercises, alongside supervised web application testing.',
+    'A remote internship working on real client investigations, alongside supervised web application testing.',
 
   /** Short version for the homepage. */
   summary: [
@@ -37,11 +37,8 @@ export const isecom = {
     'Confirmed findings included insecure cookie attributes, exposed directories and session-management weaknesses.',
   ],
 
-  scopeNote:
-    "I tested under supervision. I didn't lead or own a full client penetration test.",
-
   confidentiality:
-    'Client names, investigation subjects and case material are confidential, so none of it appears on this site. This describes the work, not the cases.',
+    'Client names, investigation subjects and case material are confidential, so none of it appears on this site.',
 }
 
 export const bigBus = {

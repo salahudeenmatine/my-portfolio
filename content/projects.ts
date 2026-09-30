@@ -38,7 +38,7 @@ export const projects: Project[] = [
       'A full security assessment of snapstore (r2c-mock-polyglot), a deliberately vulnerable practice service, run locally. Five findings: server-side request forgery, a stack buffer overflow, path traversal, SQL injection and untrusted PATH resolution. Each one is written up with the vulnerable code, the exact request, the proof output and a fix.',
     ],
     limits: [
-      'The buffer overflow is proven as a remote crash. Code execution was not demonstrated.',
+      'The buffer overflow is proven as a remote crash of the helper process. Code execution was not demonstrated.',
       'The PATH finding needs write access to an early PATH directory. It is not a standalone remote exploit.',
     ],
     links: [
@@ -69,7 +69,6 @@ export const projects: Project[] = [
       'HTTP security-posture checks.',
       'Automated HTML reports with rule-based severity.',
     ],
-    limits: ['Severity comes from my own rules, not CVSS.'],
     onHome: true,
     moreLabel: 'More on the Attack Surface Mapper',
   },
@@ -93,7 +92,6 @@ export const projects: Project[] = [
       'Run logs.',
       'A structured report.',
     ],
-    limits: ['An academic project, not professional casework.'],
     onHome: true,
     moreLabel: 'More on the investigation framework',
   },
@@ -114,7 +112,6 @@ export const projects: Project[] = [
       'Investigated possible exfiltration paths. I did not complete external exfiltration.',
       'Documented successful and unsuccessful attempts, and the defences I ran into.',
     ],
-    limits: ['Secret disclosure inside the challenge, not external exfiltration.'],
     onHome: true,
     moreLabel: 'More on the Tantalus challenge',
   },

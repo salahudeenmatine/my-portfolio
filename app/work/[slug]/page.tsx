@@ -161,8 +161,8 @@ export default async function CaseStudyPage({ params }: Params) {
           <Row>
             <h2 id="sources-title">Source material</h2>
             <p>
-              Everything on this page comes from the published report, where each finding also includes the full request and
-              proof output.
+              This page is based on the published report, which also includes the full request and proof output for each
+              finding.
             </p>
             <ul className="link-list">
               {study.links.map((l) => (

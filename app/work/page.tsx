@@ -23,12 +23,11 @@ export default function WorkPage() {
               Work
             </h1>
             <p className="lede">
-              Each piece of work is labelled with the kind of work it was, and anything it doesn’t show is noted beside it.
+              A published security assessment, Python tooling, my final-year investigation framework and AI-agent security
+              challenge work.
             </p>
             <p>
-              My client investigation and supervised testing work at ISECOM is on the{' '}
-              <Link href="/experience#isecom">Experience</Link> page. The case material itself is confidential, so it isn’t
-              here.
+              My client work at ISECOM is described on the <Link href="/experience#isecom">Experience</Link> page.
             </p>
           </Row>
         </div>
