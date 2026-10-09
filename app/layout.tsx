@@ -1,53 +1,70 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next'
+import localFont from 'next/font/local'
+import { site } from '@/content/site'
+import { SiteHeader } from '@/components/SiteHeader'
+import { SiteFooter } from '@/components/SiteFooter'
+import './globals.css'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// Fonts are self-hosted (OFL licences in app/fonts), so builds never depend on Google Fonts.
+const sans = localFont({
+  src: './fonts/schibsted-grotesk-latin-wght-normal.woff2',
+  variable: '--font-sans',
+  weight: '400 900',
+  display: 'swap',
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const serif = localFont({
+  src: './fonts/literata-latin-standard-normal.woff2',
+  variable: '--font-serif',
+  weight: '200 900',
+  display: 'swap',
+})
+
+const mono = localFont({
+  src: [
+    { path: './fonts/ibm-plex-mono-latin-400-normal.woff2', weight: '400' },
+    { path: './fonts/ibm-plex-mono-latin-500-normal.woff2', weight: '500' },
+  ],
+  variable: '--font-mono',
+  display: 'swap',
+  preload: false,
+})
+
+const defaultTitle = `${site.name} | ${site.role}`
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://salahudeenmatine.vercel.app"),
-  title: "Salahudeen Matine | Cyber Security Student",
-  description:
-    "Final-year Cyber Security student at UWL. Specialising in OSINT investigations, web application testing, and threat intelligence.",
+  metadataBase: new URL(site.url),
+  title: { default: defaultTitle, template: `%s | ${site.name}` },
+  description: site.description,
+  alternates: { canonical: '/' },
   openGraph: {
-    title: "Salahudeen Matine | Cyber Security Student",
-    description:
-      "Final-year Cyber Security student at UWL. Specialising in OSINT investigations, web application testing, and threat intelligence.",
-    url: "https://salahudeenmatine.vercel.app",
-    siteName: "Salahudeen Matine",
-    type: "website",
-    locale: "en_GB",
-    images: ["/opengraph-image"],
+    title: defaultTitle,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
+    type: 'website',
+    locale: 'en_GB',
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Salahudeen Matine | Cyber Security Student",
-    description:
-      "Final-year Cyber Security student at UWL. Specialising in OSINT, web app testing, and threat intelligence.",
-    images: ["/opengraph-image"],
-  },
-};
+  twitter: { card: 'summary_large_image', title: defaultTitle, description: site.description },
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: '#F4F4EF',
+}
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en-GB" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+      <body>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <SiteHeader />
+        <main id="main" tabIndex={-1}>
+          {children}
+        </main>
+        <SiteFooter />
       </body>
     </html>
-  );
+  )
 }
