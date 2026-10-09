@@ -843,6 +843,25 @@ article .section {
   padding-top: 1.3rem;
 }
 
+/* Portrait (Experience page). Sits in the margin column; no border on that column. */
+.row--portrait .row-margin {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.portrait {
+  width: 100%;
+  max-width: 13rem;
+  height: auto;
+  border-radius: 2px;
+}
+
+@media (min-width: 62rem) {
+  .portrait {
+    max-width: 100%;
+  }
+}
+
 .entry-title {
   font-family: var(--sans);
   font-weight: 650;

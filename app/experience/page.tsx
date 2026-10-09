@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
+import portrait from '@/content/profile/portrait.jpg'
 import { isecom, bigBus, education, languages, toolsUsed } from '@/content/experience'
 import { Row } from '@/components/Row'
 import { Flow } from '@/components/Flow'
@@ -17,7 +19,10 @@ export default function ExperiencePage() {
     <>
       <section className="section" aria-labelledby="experience-title">
         <div className="wrap">
-          <Row>
+          <Row
+            className="row--portrait"
+            margin={<Image src={portrait} alt="Salahudeen Matine" className="portrait" sizes="16rem" priority />}
+          >
             <h1 id="experience-title" className="page-title">
               Experience
             </h1>
